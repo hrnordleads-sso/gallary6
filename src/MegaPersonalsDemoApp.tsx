@@ -8,11 +8,13 @@ import {
   Mail,
   MapPinned,
   Megaphone,
+  Menu,
   Search,
   Settings,
   Shield,
   Users,
   Workflow,
+  X,
 } from "lucide-react";
 import {
   DEMO_ACCOUNTS,
@@ -605,26 +607,63 @@ const PAGE_COPY: Record<MegaDemoPageId, { title: string; subtitle: string }> = {
 export default function MegaPersonalsDemoApp({ path, onNavigate }: Props) {
   const page = useMemo(() => resolveMegaDemoPage(path), [path]);
   const [automation, setAutomation] = useState(DEMO_AUTOMATION);
+  const [navOpen, setNavOpen] = useState(false);
   const copy = PAGE_COPY[page];
 
   useEffect(() => {
     document.title = "MegaPersonals Automation Panel";
     window.scrollTo({ top: 0, behavior: "auto" });
+    setNavOpen(false);
   }, [page]);
 
+  useEffect(() => {
+    if (!navOpen) {
+      return;
+    }
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setNavOpen(false);
+      }
+    };
+    document.addEventListener("keydown", onKeyDown);
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKeyDown);
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [navOpen]);
+
   const go = (nextPath: string) => {
+    setNavOpen(false);
     onNavigate(nextPath);
   };
 
   return (
-    <div className="mp-demo">
-      <aside className="mp-demo__sidebar">
+    <div className={`mp-demo${navOpen ? " is-nav-open" : ""}`}>
+      <button
+        type="button"
+        className="mp-demo__backdrop"
+        aria-label="Close navigation"
+        tabIndex={navOpen ? 0 : -1}
+        onClick={() => setNavOpen(false)}
+      />
+
+      <aside className="mp-demo__sidebar" id="mp-primary-nav">
         <div className="mp-demo__brand">
           <div className="mp-demo__brand-mark">MP</div>
           <div className="mp-demo__brand-copy">
             <strong>MegaPersonals</strong>
             <span>Automation Panel</span>
           </div>
+          <button
+            type="button"
+            className="mp-demo__nav-close"
+            aria-label="Close menu"
+            onClick={() => setNavOpen(false)}
+          >
+            <X className="h-4 w-4" aria-hidden />
+          </button>
         </div>
 
         <nav className="mp-demo__nav" aria-label="Primary">
@@ -651,6 +690,20 @@ export default function MegaPersonalsDemoApp({ path, onNavigate }: Props) {
 
       <div className="mp-demo__main">
         <header className="mp-demo__topbar">
+          <button
+            type="button"
+            className="mp-demo__menu-btn"
+            aria-label="Open menu"
+            aria-expanded={navOpen}
+            aria-controls="mp-primary-nav"
+            onClick={() => setNavOpen(true)}
+          >
+            <Menu className="h-4 w-4" aria-hidden />
+          </button>
+          <div className="mp-demo__top-brand">
+            <strong>MegaPersonals</strong>
+            <span>{copy.title}</span>
+          </div>
           <span className="mp-demo__status">
             <i />
             All systems normal
@@ -666,7 +719,7 @@ export default function MegaPersonalsDemoApp({ path, onNavigate }: Props) {
             </button>
             <div className="mp-demo__profile">
               <span className="mp-demo__avatar">AD</span>
-              Admin
+              <span className="mp-demo__profile-name">Admin</span>
             </div>
           </div>
         </header>
