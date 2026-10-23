@@ -13,8 +13,12 @@
   --mp-orange: #f59e0b;
   --mp-rose: #f43f5e;
   --mp-red: #ef4444;
+  height: 100vh;
+  height: 100dvh;
   min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
+  overflow: hidden;
   background:
     radial-gradient(ellipse 80% 50% at 10% -10%, rgba(99, 102, 241, 0.14), transparent 55%),
     radial-gradient(ellipse 60% 40% at 90% 0%, rgba(59, 130, 246, 0.1), transparent 50%),
@@ -26,18 +30,22 @@
 .mp-demo__sidebar {
   width: 16.5rem;
   flex-shrink: 0;
+  height: 100%;
+  max-height: 100%;
   background: #0d1118;
   border-right: 1px solid var(--mp-border);
   display: flex;
   flex-direction: column;
   padding: 1.1rem 0.9rem;
-  gap: 1rem;
+  gap: 0.85rem;
+  overflow: hidden;
 }
 
 .mp-demo__brand {
   display: flex;
   align-items: center;
   gap: 0.7rem;
+  flex-shrink: 0;
   padding: 0.35rem 0.4rem 0.75rem;
   border-bottom: 1px solid var(--mp-border);
 }
@@ -80,13 +88,40 @@
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
-  flex: 1;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  padding-right: 0.15rem;
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(148, 163, 184, 0.45) transparent;
+}
+
+.mp-demo__nav::-webkit-scrollbar {
+  width: 0.35rem;
+}
+
+.mp-demo__nav::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.mp-demo__nav::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: rgba(148, 163, 184, 0.35);
+}
+
+.mp-demo__nav::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.55);
 }
 
 .mp-demo__nav-link {
   display: flex;
   align-items: center;
   gap: 0.65rem;
+  flex-shrink: 0;
   padding: 0.65rem 0.75rem;
   border-radius: 0.7rem;
   color: var(--mp-muted);
@@ -112,7 +147,8 @@
 }
 
 .mp-demo__sidebar-cta {
-  margin-top: auto;
+  margin-top: 0.15rem;
+  flex-shrink: 0;
   width: 100%;
   border: 0;
   border-radius: 0.75rem;
@@ -132,8 +168,10 @@
 .mp-demo__main {
   flex: 1;
   min-width: 0;
+  min-height: 0;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
 .mp-demo__topbar {
@@ -717,6 +755,10 @@
     inset: 0 auto 0 0;
     z-index: 40;
     width: min(18.5rem, 86vw);
+    height: 100vh;
+    height: 100dvh;
+    max-height: 100vh;
+    max-height: 100dvh;
     transform: translateX(-105%);
     transition: transform 0.22s ease;
     box-shadow: 18px 0 40px rgba(0, 0, 0, 0.35);
