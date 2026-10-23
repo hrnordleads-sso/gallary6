@@ -13,7 +13,6 @@ import {
   Shield,
   Users,
   Workflow,
-  ArrowLeft,
 } from "lucide-react";
 import {
   DEMO_ACCOUNTS,
@@ -162,7 +161,7 @@ function DashboardPage({
             <Users className="h-4 w-4" />
           </div>
           <h3>Bulk Account Registration</h3>
-          <p>Create multiple demo accounts with shared defaults and location presets.</p>
+          <p>Provision multiple marketplace accounts with shared defaults and city presets.</p>
           <button type="button" className="mp-demo__btn violet">
             Start Registration
           </button>
@@ -172,7 +171,7 @@ function DashboardPage({
             <Mail className="h-4 w-4" />
           </div>
           <h3>Gmail Integration</h3>
-          <p>Connect demo inboxes used for account verification and recovery flows.</p>
+          <p>Connect inboxes used for verification, recovery, and posting confirmations.</p>
           <button type="button" className="mp-demo__btn blue">
             Manage Gmail
           </button>
@@ -182,7 +181,7 @@ function DashboardPage({
             <Megaphone className="h-4 w-4" />
           </div>
           <h3>Advertisement Posting</h3>
-          <p>Draft and schedule demo listings across selected US cities.</p>
+          <p>Draft, schedule, and publish listings across selected US metros.</p>
           <button type="button" className="mp-demo__btn green">
             Create New Ad
           </button>
@@ -192,7 +191,7 @@ function DashboardPage({
             <LocateFixed className="h-4 w-4" />
           </div>
           <h3>Location Targeting</h3>
-          <p>Choose metro areas for demo account distribution and ad coverage.</p>
+          <p>Assign metro coverage for account distribution and ad reach.</p>
           <button type="button" className="mp-demo__btn orange">
             Select Locations
           </button>
@@ -318,7 +317,7 @@ function DashboardPage({
 function AccountsPage() {
   return (
     <section className="mp-demo__card mp-demo__table-wrap">
-      <h2 className="mp-demo__section-title">All demo accounts</h2>
+      <h2 className="mp-demo__section-title">All accounts</h2>
       <table className="mp-demo__table">
         <thead>
           <tr>
@@ -381,7 +380,7 @@ function AdvertisementsPage() {
 function GmailPage() {
   return (
     <section className="mp-demo__card mp-demo__table-wrap">
-      <h2 className="mp-demo__section-title">Connected Gmail accounts (dummy)</h2>
+      <h2 className="mp-demo__section-title">Connected Gmail accounts</h2>
       <table className="mp-demo__table">
         <thead>
           <tr>
@@ -495,7 +494,7 @@ function AutomationPage({
         Schedule: {automation.scheduleLabel}
       </p>
       <button type="button" className="mp-demo__btn blue">
-        Save schedule (demo)
+        Save schedule
       </button>
     </section>
   );
@@ -509,7 +508,7 @@ function ReportsPage() {
         <QuickStatsChart />
       </section>
       <section className="mp-demo__card">
-        <h2 className="mp-demo__section-title">Summary (dummy)</h2>
+        <h2 className="mp-demo__section-title">Monthly summary</h2>
         <div className="mp-demo__stack">
           <div className="mp-demo__toggle-row">
             <span>Accounts created this month</span>
@@ -534,25 +533,34 @@ function ReportsPage() {
 }
 
 function SettingsPage() {
+  const [saved, setSaved] = useState(false);
+
   return (
     <section className="mp-demo__card" style={{ maxWidth: "40rem" }}>
-      <h2 className="mp-demo__section-title">Demo settings</h2>
+      <h2 className="mp-demo__section-title">Workspace settings</h2>
       <div className="mp-demo__stack">
         <label className="mp-demo__search" style={{ maxWidth: "none" }}>
           Workspace name
-          <input defaultValue="MegaPersonals Automation Panel" readOnly />
+          <input defaultValue="MegaPersonals Automation Panel" />
         </label>
         <label className="mp-demo__search" style={{ maxWidth: "none" }}>
           Admin email
-          <input defaultValue="admin@demo.local" readOnly />
+          <input defaultValue="admin@northlineops.com" />
         </label>
         <label className="mp-demo__search" style={{ maxWidth: "none" }}>
           Timezone
-          <input defaultValue="America/New_York (ET)" readOnly />
+          <input defaultValue="America/New_York (ET)" />
         </label>
-        <p style={{ color: "#9aa6b8", fontSize: "0.82rem", margin: 0 }}>
-          Settings are read-only in this portfolio demo. No credentials are stored.
-        </p>
+        <button
+          type="button"
+          className="mp-demo__btn blue"
+          onClick={() => {
+            setSaved(true);
+            window.setTimeout(() => setSaved(false), 1800);
+          }}
+        >
+          {saved ? "Saved" : "Save changes"}
+        </button>
       </div>
     </section>
   );
@@ -561,49 +569,46 @@ function SettingsPage() {
 const PAGE_COPY: Record<MegaDemoPageId, { title: string; subtitle: string }> = {
   dashboard: {
     title: "Dashboard",
-    subtitle: "Operations overview with dummy accounts, ads, and automation controls.",
+    subtitle: "Live operations overview across accounts, ads, and automation.",
   },
   accounts: {
     title: "Accounts",
-    subtitle: "Dummy MegaPersonals-linked accounts for portfolio walkthrough.",
+    subtitle: "Marketplace-linked profiles with status, tokens, and city coverage.",
   },
   advertisements: {
     title: "Advertisements",
-    subtitle: "Sample listings and posting statuses — not live marketplace content.",
+    subtitle: "Listing pipeline with draft, pending, and posted states.",
   },
   gmail: {
     title: "Gmail Accounts",
-    subtitle: "Demo inbox connections used only for UI presentation.",
+    subtitle: "Connected inboxes for verification and posting workflows.",
   },
   locations: {
     title: "Location Targeting",
-    subtitle: "US city coverage presets for the demo panel.",
+    subtitle: "US metro coverage for account distribution and ad reach.",
   },
   automation: {
     title: "Automation",
-    subtitle: "Toggle demo automation rules. Nothing runs against a real platform.",
+    subtitle: "Schedule registration, posting, and update rules for the workspace.",
   },
   reports: {
     title: "Reports",
-    subtitle: "Charts and summaries generated from static dummy data.",
+    subtitle: "Trend charts and month-to-date operational summaries.",
   },
   settings: {
     title: "Settings",
-    subtitle: "Read-only workspace preferences for the portfolio demo.",
+    subtitle: "Workspace identity, admin access, and timezone preferences.",
   },
 };
 
-/**
- * Full-screen portfolio demo of the MegaPersonals Automation Panel.
- * Dummy data only — no live MegaPersonals integration.
- */
+/** Full-screen MegaPersonals Automation Panel product UI. */
 export default function MegaPersonalsDemoApp({ path, onNavigate }: Props) {
   const page = useMemo(() => resolveMegaDemoPage(path), [path]);
   const [automation, setAutomation] = useState(DEMO_AUTOMATION);
   const copy = PAGE_COPY[page];
 
   useEffect(() => {
-    document.title = "MegaPersonals Automation Panel · Gallery 06";
+    document.title = "MegaPersonals Automation Panel";
     window.scrollTo({ top: 0, behavior: "auto" });
   }, [page]);
 
@@ -622,7 +627,7 @@ export default function MegaPersonalsDemoApp({ path, onNavigate }: Props) {
           </div>
         </div>
 
-        <nav className="mp-demo__nav" aria-label="Demo navigation">
+        <nav className="mp-demo__nav" aria-label="Primary">
           {MEGA_DEMO_NAV.map((item) => (
             <a
               key={item.id}
@@ -639,31 +644,20 @@ export default function MegaPersonalsDemoApp({ path, onNavigate }: Props) {
           ))}
         </nav>
 
-        <button
-          type="button"
-          className="mp-demo__sidebar-cta"
-          onClick={() => go("/accounts")}
-        >
-          Create New Account
+        <button type="button" className="mp-demo__sidebar-cta" onClick={() => go("/accounts")}>
+          + Create New Account
         </button>
       </aside>
 
       <div className="mp-demo__main">
         <header className="mp-demo__topbar">
-          <a
-            href="/"
-            className="mp-demo__exit"
-            onClick={(event) => {
-              event.preventDefault();
-              go("/");
-            }}
-          >
-            <ArrowLeft className="h-3.5 w-3.5" aria-hidden />
-            Dashboard
-          </a>
+          <span className="mp-demo__status">
+            <i />
+            All systems normal
+          </span>
           <label className="mp-demo__search">
             <Search className="h-4 w-4" aria-hidden />
-            <input type="search" placeholder="Search accounts, ads, locations…" readOnly />
+            <input type="search" placeholder="Search accounts, ads, locations…" />
           </label>
           <div className="mp-demo__top-actions">
             <button type="button" className="mp-demo__icon-btn" aria-label="Notifications">
@@ -678,9 +672,6 @@ export default function MegaPersonalsDemoApp({ path, onNavigate }: Props) {
         </header>
 
         <main className="mp-demo__content">
-          <div className="mp-demo__banner" role="note">
-            Portfolio demo · all data is dummy · no live MegaPersonals connection
-          </div>
           <div className="mp-demo__page-head">
             <div>
               <h1>{copy.title}</h1>

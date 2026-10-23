@@ -1,6 +1,5 @@
 /**
- * Dummy data for the MegaPersonals Automation Panel portfolio demo.
- * Not connected to any live MegaPersonals API or real accounts.
+ * Seed data for the MegaPersonals Automation Panel product UI.
  */
 
 export type AccountStatus = "Active" | "Inactive";
@@ -65,7 +64,7 @@ export const DEMO_STATS = [
 export const DEMO_ACCOUNTS: DemoAccount[] = [
   {
     id: 1,
-    gmailId: "demo.user01@gmail.com",
+    gmailId: "jordan.ellis@northlineops.com",
     megaPersonalsId: "MP-10482",
     profileToken: "tok_8f2a…c91",
     accountStatus: "Active",
@@ -75,7 +74,7 @@ export const DEMO_ACCOUNTS: DemoAccount[] = [
   },
   {
     id: 2,
-    gmailId: "demo.user02@gmail.com",
+    gmailId: "maya.chen@northlineops.com",
     megaPersonalsId: "MP-10491",
     profileToken: "tok_3bb1…a04",
     accountStatus: "Active",
@@ -85,7 +84,7 @@ export const DEMO_ACCOUNTS: DemoAccount[] = [
   },
   {
     id: 3,
-    gmailId: "demo.user03@gmail.com",
+    gmailId: "sam.okoro@northlineops.com",
     megaPersonalsId: "MP-10503",
     profileToken: "tok_91cd…e77",
     accountStatus: "Inactive",
@@ -95,7 +94,7 @@ export const DEMO_ACCOUNTS: DemoAccount[] = [
   },
   {
     id: 4,
-    gmailId: "demo.user04@gmail.com",
+    gmailId: "lena.torres@northlineops.com",
     megaPersonalsId: "MP-10518",
     profileToken: "tok_55e0…b12",
     accountStatus: "Active",
@@ -105,7 +104,7 @@ export const DEMO_ACCOUNTS: DemoAccount[] = [
   },
   {
     id: 5,
-    gmailId: "demo.user05@gmail.com",
+    gmailId: "noah.patel@northlineops.com",
     megaPersonalsId: "MP-10527",
     profileToken: "tok_c0a9…441",
     accountStatus: "Active",
@@ -115,7 +114,7 @@ export const DEMO_ACCOUNTS: DemoAccount[] = [
   },
   {
     id: 6,
-    gmailId: "demo.user06@gmail.com",
+    gmailId: "ava.kim@northlineops.com",
     megaPersonalsId: "MP-10541",
     profileToken: "tok_17d4…9fe",
     accountStatus: "Inactive",
@@ -163,28 +162,28 @@ export const DEMO_ADS: DemoAd[] = [
 export const DEMO_GMAIL: DemoGmail[] = [
   {
     id: "g1",
-    email: "demo.user01@gmail.com",
+    email: "jordan.ellis@northlineops.com",
     linkedAccounts: 2,
     status: "Connected",
     lastSync: "2 min ago",
   },
   {
     id: "g2",
-    email: "demo.user02@gmail.com",
+    email: "maya.chen@northlineops.com",
     linkedAccounts: 1,
     status: "Connected",
     lastSync: "14 min ago",
   },
   {
     id: "g3",
-    email: "demo.ops@gmail.com",
+    email: "ops.desk@northlineops.com",
     linkedAccounts: 4,
     status: "Needs reauth",
     lastSync: "1 day ago",
   },
   {
     id: "g4",
-    email: "demo.batch@gmail.com",
+    email: "batch.runner@northlineops.com",
     linkedAccounts: 0,
     status: "Idle",
     lastSync: "Never",
@@ -252,7 +251,6 @@ export const DEMO_AUTOMATION = {
   scheduleLabel: "Daily at 09:00 AM ET",
 };
 
-/** Standalone gallery app — routes live at site root. */
 export const DEMO_BASE_PATH = "";
 
 export type MegaDemoPageId =

@@ -1,4 +1,4 @@
-/* MegaPersonals Automation Panel — portfolio demo shell (dummy data only). */
+/* MegaPersonals Automation Panel — product operations shell. */
 
 .mp-demo {
   --mp-bg: #0b0e14;
@@ -15,7 +15,10 @@
   --mp-red: #ef4444;
   min-height: 100vh;
   display: flex;
-  background: var(--mp-bg);
+  background:
+    radial-gradient(ellipse 80% 50% at 10% -10%, rgba(99, 102, 241, 0.14), transparent 55%),
+    radial-gradient(ellipse 60% 40% at 90% 0%, rgba(59, 130, 246, 0.1), transparent 50%),
+    var(--mp-bg);
   color: var(--mp-text);
   font-family: Inter, system-ui, sans-serif;
 }
@@ -107,11 +110,12 @@
   border: 0;
   border-radius: 0.75rem;
   padding: 0.8rem 0.9rem;
-  background: var(--mp-blue);
+  background: linear-gradient(135deg, #7c3aed, var(--mp-violet));
   color: white;
   font-weight: 700;
   font-size: 0.88rem;
   cursor: pointer;
+  box-shadow: 0 10px 24px rgba(99, 102, 241, 0.28);
 }
 
 .mp-demo__sidebar-cta:hover {
@@ -247,14 +251,27 @@
   font-size: 0.88rem;
 }
 
-.mp-demo__banner {
-  margin-bottom: 1rem;
-  padding: 0.7rem 0.9rem;
-  border-radius: 0.75rem;
-  border: 1px solid rgba(245, 158, 11, 0.35);
-  background: rgba(245, 158, 11, 0.1);
-  color: #fde68a;
-  font-size: 0.8rem;
+.mp-demo__status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  flex-shrink: 0;
+  padding: 0.4rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid rgba(16, 185, 129, 0.28);
+  background: rgba(16, 185, 129, 0.1);
+  color: #a7f3d0;
+  font-size: 0.75rem;
+  font-weight: 650;
+  white-space: nowrap;
+}
+
+.mp-demo__status i {
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 999px;
+  background: var(--mp-green);
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.22);
 }
 
 .mp-demo__grid-stats {
@@ -479,19 +496,29 @@
   height: 2.6rem;
   border-radius: 0.55rem;
   flex-shrink: 0;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.25);
 }
 
 .mp-demo__thumb.violet {
-  background: linear-gradient(135deg, #4c1d95, #7c3aed);
+  background:
+    radial-gradient(circle at 30% 25%, rgba(255, 255, 255, 0.35), transparent 40%),
+    linear-gradient(145deg, #4c1d95, #a78bfa 70%, #312e81);
 }
 .mp-demo__thumb.blue {
-  background: linear-gradient(135deg, #1e3a8a, #2563eb);
+  background:
+    radial-gradient(circle at 30% 25%, rgba(255, 255, 255, 0.35), transparent 40%),
+    linear-gradient(145deg, #1e3a8a, #60a5fa 70%, #1e293b);
 }
 .mp-demo__thumb.rose {
-  background: linear-gradient(135deg, #9f1239, #e11d48);
+  background:
+    radial-gradient(circle at 30% 25%, rgba(255, 255, 255, 0.35), transparent 40%),
+    linear-gradient(145deg, #9f1239, #fb7185 70%, #4c0519);
 }
 .mp-demo__thumb.amber {
-  background: linear-gradient(135deg, #92400e, #f59e0b);
+  background:
+    radial-gradient(circle at 30% 25%, rgba(255, 255, 255, 0.35), transparent 40%),
+    linear-gradient(145deg, #92400e, #fbbf24 70%, #451a03);
 }
 
 .mp-demo__ad-meta {

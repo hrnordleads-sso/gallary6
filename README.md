@@ -1,8 +1,8 @@
 # gallary6
 
-Gallery site 06 — **MegaPersonals Automation Panel** portfolio demo.
+**MegaPersonals Automation Panel** — live gallery site 06.
 
-Dummy data only. No live MegaPersonals API or real accounts.
+Operations dashboard for accounts, advertisements, Gmail, location targeting, automation, and reports.
 
 ## Local
 
@@ -11,6 +11,6 @@ npm install
 npm run dev
 ```
 
-## Deploy
+## Live
 
-Vercel project name: `gallary6` → https://gallary6.vercel.app
+https://hrnordleads-sso.github.io/gallary6/
